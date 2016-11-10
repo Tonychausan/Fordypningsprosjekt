@@ -1,0 +1,32 @@
+\chapter{The Myo Armband}
+\label{chap:myo}
+The Myo armband, developed by Thalmic Labs, is a wearable gesture and motion control device that uses a set of electromyographic (EMG) sensors that sense electrical activity, combined with a gyroscope, accelerometer and magnetometer, to recognize gestures \cite{myo}. This chapter will cover a brief description of the Myo device, such as hardware specification and software functionality.
+
+\section{Hardware}
+The Myo armband consist of eight EMG sensors and nine-axis Inertial Measurement Unit (IMU) containing gyroscope, accelerometer and magnetometer.
+
+\begin{table}[h!]
+\centering
+    \begin{tabular}{ | l | p{8cm} |}
+        \hline
+        \textbf{Sensors} & EMG sensor,\newline Gyroscope,\newline Accelerometer, \newline Magnetometer\\ \hline
+        
+        \textbf{Processor} & ARM Cortex M4 Processor  \\ \hline
+        
+        \textbf{Feedback} & Dual Indicator LEDs,\newline Short, Medium, Long Vibrations  \\ \hline
+    \end{tabular}
+    \caption{Hardware list for the Myo armband}
+    \label{table:myo_hardware}
+\end{table}
+
+\section{The Myo SDK}
+\label{sec:myoSDK}
+Thalmic Labs provides a SDK that allows developers to obtain access to the data from the Myo device. Since the Windows SDK was used in this project, every statements will be based on the Windows SDK.
+
+The Myo armband provide applications with two type of data: Spatial data and gestural data.
+
+\subsection{Spatial Data (IMU)}
+Spatial data represents the location of the armband, and informs the applications about orientation and movements. This data is provided by the IMU. 
+
+\subsection{Gestural Data (EMG sensor)}
+Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors.   

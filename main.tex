@@ -13,10 +13,18 @@
 \usepackage{hyperref} % Hyperlinks
 \usepackage[noabbrev]{cleveref} % Clickalbe hyperlinks
 \usepackage[parfill]{parskip} % Remove intent on paragraph
+\usepackage{caption} % add captions
+
+\usepackage{glossaries} % for abbreviation list
 
 
 % Edit the meta.tex file to change title and author names
 \input{meta.tex}
+
+
+\makeglossaries
+\input{appendix/abbreviations.tex}
+
 
 \begin{document}
 % The title page
@@ -38,12 +46,27 @@
 
 % Main matter - edit corresponding file under content/ to change
 \input{content/01-Introduction.tex}
+\input{content/02-MyoArmband.tex}
 \input{content/XX-Discussion.tex}
 \input{content/XY-Conclusion.tex}
+
+
 
 
 % Bibliography - edit references.bib and use the \cite command in text
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{plain}
 \bibliography{references}
+
+% Appendix
+\addcontentsline{toc}{chapter}{Appendix}
+
+\glsaddall % make it possible to print glossary without references
+\printglossary[title=Abbreviations,nonumberlist] % print the glossary
+\addcontentsline{toc}{section}{Abbreviations}
+
+
+
 \end{document}
+
+

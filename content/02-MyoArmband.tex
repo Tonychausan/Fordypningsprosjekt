@@ -26,7 +26,13 @@ Thalmic Labs provides a SDK that allows developers to obtain access to the data 
 The Myo armband provide applications with two type of data: Spatial data and gestural data.
 
 \subsection{Spatial Data (IMU)}
-Spatial data represents the location of the armband, and informs the applications about orientation and movements. This data is provided by the IMU. 
+Spatial data represents the location of the armband, and informs the applications about orientation and movements. This data is provided by the IMU. The Myo armband output three different data from the IMU: 
+\begin{itemize}
+  \item raw Accelerometer data
+  \item raw Gyroscope data
+  \item Orientation data
+\end{itemize}
+All which has a frame rate of 50 hz. Accelerometer data and gyroscope data is represented as 3D-vectors, with the unit g-force (accelerometer) and deg/s (gyroscope), while the orientation data from the magnetometer is represented as quaternions.
 
 \subsection{Gestural Data (EMG sensor)}
-Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors.   
+Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a frame rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} doesn't exactly provide information about the measurement unit. 

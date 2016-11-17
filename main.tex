@@ -1,4 +1,4 @@
-\documentclass{scrreprt}
+\documentclass[12pt]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 
@@ -9,13 +9,22 @@
 \pgfplotsset{compat=1.12}
 \usepackage{textcomp}
 
+
 \usepackage{amsmath} % Math
 \usepackage{hyperref} % Hyperlinks
 \usepackage[noabbrev]{cleveref} % Clickalbe hyperlinks
 \usepackage[parfill]{parskip} % Remove intent on paragraph
 \usepackage{caption} % add captions
-
+\usepackage{url} % URLs
 \usepackage{glossaries} % for abbreviation list
+
+
+\usepackage{mathptmx} % times new roman font
+\usepackage{setspace} % line space
+
+% Remove underfull hbox warnings for bib
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\raggedright}{}{}
 
 
 % Edit the meta.tex file to change title and author names
@@ -47,6 +56,7 @@
 % Main matter - edit corresponding file under content/ to change
 \input{content/01-Introduction.tex}
 \input{content/02-MyoArmband.tex}
+\input{content/03-Theory.tex}
 \input{content/XX-Discussion.tex}
 \input{content/XY-Conclusion.tex}
 

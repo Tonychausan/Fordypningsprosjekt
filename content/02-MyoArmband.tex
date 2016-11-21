@@ -1,11 +1,20 @@
 \chapter{The Myo Armband}
 \label{chap:myo}
-The Myo armband, developed by Thalmic Labs, is a wearable gesture and motion control device that uses a set of electromyographic (EMG) sensors that sense electrical activity, combined with a gyroscope, accelerometer and magnetometer, to recognize gestures \cite{myo}. This chapter will cover a brief description of the Myo device, such as hardware specification and software functionality.
+This project uses the Myo armband, and this chapter will cover a brief description of the Myo device, such as hardware specification and software functionality. The Myo armband, developed by Thalmic Labs, is a wearable gesture and motion control device that uses a set of electromyographic (EMG) sensors that sense electrical activity, combined with an Inertial Measurement Unit (IMU) including gyroscope, accelerometer and magnetometer, to recognize gestures \cite{myo}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=5cm]{images/myoarmband.jpg}
+    \captionsource{\url{https://s3.amazonaws.com/wordpressprod/blog/wp-content/uploads/2014/06/front-view.jpg}}
+    \caption[The Myo Armband]{The Myo Armband}
+    \label{fig:myoarmband}
+\end{figure}
+
 
 \section{Hardware}
-The Myo armband consist of eight EMG sensors and nine-axis Inertial Measurement Unit (IMU) containing gyroscope, accelerometer and magnetometer.
+The Myo armband consist of eight EMG sensors and nine-axis IMU containing gyroscope, accelerometer and magnetometer. The hardware specification is shown in \cref{table:myo_hardware}.
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
     \begin{tabular}{ | l | p{8cm} |}
         \hline
@@ -15,7 +24,7 @@ The Myo armband consist of eight EMG sensors and nine-axis Inertial Measurement 
         
         \textbf{Feedback} & Dual Indicator LEDs,\newline Short, Medium, Long Vibrations  \\ \hline
     \end{tabular}
-    \caption{Hardware list for the Myo armband}
+    \caption[The Myo Hardware]{List of The Myo Hardware specifications}
     \label{table:myo_hardware}
 \end{table}
 
@@ -35,4 +44,4 @@ Spatial data represents the location of the armband, and informs the application
 All which has a frame rate of 50 hz. Accelerometer data and gyroscope data is represented as 3D-vectors, with the unit g-force (accelerometer) and deg/s (gyroscope), while the orientation data from the magnetometer is represented as quaternions.
 
 \subsection{Gestural Data (EMG sensor)}
-Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a frame rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} doesn't exactly provide information about the measurement unit. 
+Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a frame rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} doesn't exactly provide information about the measurement unit, but the values are converted into a 8-bit value ranging from -128 to 128.

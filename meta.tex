@@ -6,8 +6,16 @@
 \date{\today}
 
 
-% Times new romans with 1.15 line-space
+% 1.15 line-space
 \renewcommand{\baselinestretch}{1.15} 
 
 % Over-line over mean variables
 \newcommand*\mean[1]{\bar{#1}}
+
+% Source of figures
+\newcommand*{\captionsource}[1]{
+    \fontsize{7}{6}\selectfont{
+        \hspace{\linewidth}
+        \textbf{Source:} #1
+    }
+}

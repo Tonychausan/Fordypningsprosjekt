@@ -1,11 +1,12 @@
 \section{Cross Correlation}
-Cross Correlation is a method to estimate the degree of similarity of two series. Cross correlation works on any number of dimension, but for the purpose of this project we only need to take a look at the one-dimensional cross correlation. Let $x$ and $y$ be two series, then we can define the one-dimensional normalized cross correlation $r$ at delay $d$ as	
+\label{sec:cross_correlation}
+Cross Correlation is a method to estimate the degree of similarity of two series. Cross correlation works on any number of dimension, but for the purpose of this project, we only need to take a look at the one-dimensional cross correlation. Let $x$ and $y$ be two series, then we can define the one-dimensional normalized cross correlation $r$ at delay $d$ as	
 
 \begin{equation}
 \label{eq:cross_correlation}
     r(d) = \frac{\sum\limits_{i=0}\limits^{n} [(x(i) - \mean{x}) * (y(i-d) - \mean{y})]}{\sqrt{\sum\limits_{i=0}\limits^{n} (x(i) - \mean{x})^{2}} * \sqrt{\sum\limits_{i=0}\limits^{n} (y(i-d) - \mean{y})^{2}}},
 \end{equation}
 
-where $n$ is the number of point and $\mean{x}$ and $\mean{y}$ are the means of the corresponding series \cite{cross_correlation_theory}. The cross correlation have a range of -1 to 1. The value gives information about the series rises and falls relative to each other. If both rise at an identical rate, then we have $r = 1$, and opposite $r = -1$ if they fall at an identical rate. 
+where $n$ is the number of point and $\mean{x}$ and $\mean{y}$ are the means of the corresponding series \cite{cross_correlation_theory}. The cross correlation have a range of -1 to 1. The value gives information about the series rises and falls relative to each other, where 0 indicating no correlation, $r > 0$ indicating positive correlation and  $r < 0$ indecating negativ correlation. If both rise at an identical rate, then we have $r = 1$, and opposite $r = -1$ if they fall at an identical rate. 
 
-Given by the formula \ref{eq:cross_correlation} we get an issue when the index is less than 0 or when the index is greater than or equal to the number of points. The most common approach is to ignor this point and let $y(k) = 0$ for $k < 0$ or $k > n$ \cite{cross_correlation_code}.
+Given by the formula \ref{eq:cross_correlation} we get an issue when the index is less than 0 or when the index is greater than or equal to the number of points. The most common approach is to ignor this points and let $y(k) = 0$ if $k < 0$ or $k \geq n$ \cite{cross_correlation_code}.

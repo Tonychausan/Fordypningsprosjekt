@@ -18,7 +18,6 @@
 \usepackage{url} % URLs
 \usepackage{glossaries} % for abbreviation list
 
-
 \usepackage{mathptmx} % times new roman font
 \usepackage{setspace} % line space
 
@@ -26,6 +25,10 @@
 \usepackage{etoolbox}
 \apptocmd{\thebibliography}{\raggedright}{}{}
 
+% color
+\usepackage{xcolor}
+\pagecolor[rgb]{0.3, 0.3, 0.3}
+\color[rgb]{0.9,0.9,0.9}
 
 % Edit the meta.tex file to change title and author names
 \input{meta.tex}
@@ -43,6 +46,7 @@
 \thispagestyle{empty}
 
 \clearpage
+\pagenumbering{Roman}
 \setcounter{page}{1}
 
 \tableofcontents
@@ -53,10 +57,15 @@
 \listoftables
 \addcontentsline{toc}{chapter}{\listtablename}
 
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
 % Main matter - edit corresponding file under content/ to change
 \input{content/01-Introduction.tex}
 \input{content/02-MyoArmband.tex}
 \input{content/03-Theory.tex}
+\input{content/04-Methodology.tex}
 \input{content/XX-Discussion.tex}
 \input{content/XY-Conclusion.tex}
 
@@ -64,16 +73,21 @@
 
 
 % Bibliography - edit references.bib and use the \cite command in text
-\addcontentsline{toc}{chapter}{Bibliography}
+\renewcommand{\bibname}{References}
 \bibliographystyle{plain}
 \bibliography{references}
+\addcontentsline{toc}{chapter}{\bibname}
 
-% Appendix
+\clearpage
+\input{appendix/appendix.tex}
 \addcontentsline{toc}{chapter}{Appendix}
+\pagenumbering{arabic}% resets `page` counter to 1
+\renewcommand*{\thepage}{A-\arabic{page}}
 
 \glsaddall % make it possible to print glossary without references
 \printglossary[title=Abbreviations,nonumberlist] % print the glossary
 \addcontentsline{toc}{section}{Abbreviations}
+
 
 
 

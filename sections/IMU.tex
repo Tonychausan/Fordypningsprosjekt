@@ -1,5 +1,5 @@
 \section{Inertial Measurement Unit (IMU)}
-An inertial measurement unit (IMU) is an electronic device that measures linear and angular motion, usually with the combination of accelerometers and gyroscopes, but sometimes also with magnetometers. As described in \cref{chap:myo}, the Myo armband provide data from accelerometer, gyroscope and magnetometer.
+An inertial measurement unit (IMU) is an electronic device that measures linear and angular motion, usually with the combination of accelerometers and gyroscopes, but sometimes also with magnetometers. As described in \cref{chap:myo}, the Myo armband provide data from accelerometer, gyroscope and magnetometer. These are three sensors useful to determine position and orientation, but they measure different things.
 
 \subsection{Gyroscope}
 The gyroscope is used to measure or maintain the angular position. It consist of a disc (the rotor) that spins about an axis. Based on the principle of conservation of angular momentum, a spinning rotor will maintain it's orientation, thus the axis will be unaffected by tilts or rotations \cite{gyroscope_demonstration_project}. We can separate gyroscopes into three basic types:
@@ -10,7 +10,7 @@ The gyroscope is used to measure or maintain the angular position. It consist of
     \item Optical Gyroscopes
 \end{itemize}
 
-Since vibrating structure gyroscopes with MEMS technology are widely used in smart-phones and other electronic devices, we will take a closer look at vibrating structure gyroscopes \cite{vibrating_structure_gyroscope_wiki}. To better understand vibrating structure gyroscopes we need a basic understanding of the Coriolis effect. Every point on a rotating system will have the same angular velocity, but in order to travel a straight line towards or away from the axis of rotation, the traveling object have to either increase or decrease the linear velocity in order to maintain the relative angular position. The acceleration required to maintain the relative angular position is the Coriolis acceleration, an example is shown in \cref{fig:coriolis_acceleration} \cite{vibrating_structure_gyroscope}. Vibrating object tends to continue vibrating in the same plane even if its support rotates. The Coriolis effect causes the object to apply a force on its support, and by measuring this force the angular velocity can be determined \cite{vibrating_structure_gyroscope_wiki}.
+The gyroscope measure the angular velocity of the rotor. Since vibrating structure gyroscopes with MEMS technology are widely used in smart-phones and other electronic devices, we will take a closer look at vibrating structure gyroscopes \cite{vibrating_structure_gyroscope_wiki}. To better understand vibrating structure gyroscopes we need a basic understanding of the Coriolis effect. Every point on a rotating system will have the same angular velocity, but in order to travel a straight line towards or away from the axis of rotation, the traveling object have to either increase or decrease the linear velocity in order to maintain the relative angular position. The acceleration required to maintain the relative angular position is the Coriolis acceleration, an example is shown in \cref{fig:coriolis_acceleration} \cite{vibrating_structure_gyroscope}. Vibrating object tends to continue vibrating in the same plane even if its support rotates. The Coriolis effect causes the object to apply a force on its support, and by measuring this force the angular velocity can be determined \cite{vibrating_structure_gyroscope_wiki}.
 
 \begin{figure}[ht]
     \centering
@@ -34,4 +34,7 @@ There are many type of accelerometers, but to understand how the accelerometer w
 \end{figure}
 
 \subsection{Magnetometer}
-Magnetometer is a device that measure magnetic fields.
+Orientation of a static or slow-moving rigid body can be determined from the measured gravity and local magnetic field vectors \cite{yun2008simplified}. Magnetometer is a device that measure magnetic fields, either the magnetization of magnetic materials, or the strength and the direction of the magnetic field at a point in space \cite{magnetometer_wiki}. The magnetometer from the Myo armband returns the orientation as unit quaternion \cite{myoSDK}. Quaternions provide a mathematical notation for representing orientation and rotation in the three dimensional space.
+
+\subsubsection{Quaternions and orientation}
+ Euler Angles is one way to represent orientation, and it is based on that any orientation can be archived by rotations about the axes of a coordinate system. Compared to quaternions, Euler angles is simple and intuitive, but there are some ambiguities, one of this is the gimbal lock.

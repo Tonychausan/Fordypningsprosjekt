@@ -4,4 +4,30 @@ Euler Angles is one way to represent orientation, and it is based on that any or
 
 The orientation quaternion can be estimated by rotation from the inertial frame to the body frame. The inertial frame is a fixed coordinate frame, such that the x-axis points north, the y-axes points east and the z-axis points in the gravitational direction. The body frame is a coordinate frame that is aligned with the sensor.
 
-Quaternions are a four-element number system that extends complex numbers, and is composed of one real element and three complex elements. 
+Quaternions are a number system that extends complex numbers, and is composed of one real element and three complex elements. It can be represented as a linear combination, such as
+\begin{equation*}
+    a + bi + cj + dk
+\end{equation*}
+where $a$, $b$,  $c$ and $d$ are real numbers, and $i$, $j$, and $k$ are the fundamental quaternion units. We can also represent quaternions as a four-element vector. Let the unit-vector quaternion rotation from the inertial frame to the body frame be defined as
+\begin{equation*}
+    \mathbf{q}^{b}_{i} = \begin{bmatrix}
+            w \\
+            x \\
+            y \\
+            z
+        \end{bmatrix}
+\end{equation*}
+
+We can think of the elements $x$, $y$ and $z$ of the quaternion as a "vector part" that represent a vector about which rotation that should be performed, and that the element $w$ specifies the amount of rotation that should be performed about the vector part. Let $\theta$ be the angle of rotation and the vector $[v_x,v_y,v_z]^T$ be a unit vector representing the axis of rotation, then we can define the quaternion elements as
+
+\begin{equation}
+\label{eq:quaternion}
+    \mathbf{q}^{b}_{i} = \begin{bmatrix}
+            \cos{(\frac{1}{2}\theta)}\\
+            v_x * \sin{(\frac{1}{2}\theta)}\\
+            v_y * \sin{(\frac{1}{2}\theta)}\\
+            v_z * \sin{(\frac{1}{2}\theta)}
+        \end{bmatrix}
+\end{equation}
+
+In practice, we don't need to use this definition explicitly, but it provides an intuitive description of what the quaternion represents.

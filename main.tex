@@ -85,20 +85,20 @@
 \renewcommand{\bibname}{References}
 \bibliographystyle{plain}
 \bibliography{references}
-
 \clearpage
 
-\addcontentsline{toc}{chapter}{Appendix}
-\input{appendix/appendix.tex}
 \pagenumbering{arabic}% resets `page` counter to 1
 \renewcommand*{\thepage}{A-\arabic{page}}
 
+\phantomsection
+\addcontentsline{toc}{chapter}{Appendix}
+\input{appendix/appendix.tex}
+\thispagestyle{empty}
+
 
 \glsaddall % make it possible to print glossary without references
-\phantomsection
+\printglossary[title=Abbreviations, nonumberlist] % print the glossary
 \addcontentsline{toc}{section}{Abbreviations}
-\printglossary[title=Abbreviations, nonumberlist, nopostdot=true] % print the glossary
-
 
 
 

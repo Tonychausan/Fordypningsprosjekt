@@ -19,3 +19,9 @@
         \textbf{Source:} #1
     }
 }
+
+% Fix stuff with glossary and koma-script
+\AtBeginDocument{%
+  \setlength{\glsdescwidth}{0.8\columnwidth}%
+  \setlength{\glspagelistwidth}{.1\columnwidth}%
+}

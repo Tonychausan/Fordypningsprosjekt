@@ -1,0 +1,7 @@
+\section{Orientation Quaternions}
+\label{sec:quaternion}
+Euler Angles is one way to represent orientation, and it is based on that any orientation can be archived by rotations about the axes of a coordinate system. Compared to quaternions, Euler angles is simple and intuitive, but there are some ambiguities, one of those is the gimbal lock. In simple terms, gimbal lock is when two of the axis line up, and cause the rotating object to lose a degree of freedom. Quaternions introduce another approach to represent orientation that do not suffer from the gimbal lock, but is in return less intuitive and mathematically more complicated. This section will give a brief introduction to orientation quaternions, but we will not go into theoretical details on the quaternions. We will use the CH Robotics orientation sensors as the base of the descriptions \cite{CH_Robotics}.
+
+The orientation quaternion can be estimated by rotation from the inertial frame to the body frame. The inertial frame is a fixed coordinate frame, such that the x-axis points north, the y-axes points east and the z-axis points in the gravitational direction. The body frame is a coordinate frame that is aligned with the sensor.
+
+Quaternions are a four-element number system that extends complex numbers, and is composed of one real element and three complex elements. 

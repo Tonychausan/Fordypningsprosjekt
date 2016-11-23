@@ -16,14 +16,19 @@
 \usepackage[parfill]{parskip} % Remove intent on paragraph
 \usepackage{caption} % add captions
 \usepackage{url} % URLs
+
 \usepackage{glossaries} % for abbreviation list
 
 \usepackage{mathptmx} % times new roman font
 \usepackage{setspace} % line space
 
+\usepackage{tocbibind} % fix for wrong hyperlink for toc, tof and tot
+
 % Remove underfull hbox warnings for bib
 \usepackage{etoolbox}
 \apptocmd{\thebibliography}{\raggedright}{}{}
+
+
 
 \usepackage{xcolor}
 
@@ -50,23 +55,26 @@
 \pagenumbering{Roman}
 \setcounter{page}{1}
 
+
 \tableofcontents
+\clearpage
 
 \listoffigures
-\addcontentsline{toc}{chapter}{\listfigurename}
+\clearpage
 
 \listoftables
-\addcontentsline{toc}{chapter}{\listtablename}
-
 \clearpage
+
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 % Main matter - edit corresponding file under content/ to change
 \input{content/01-Introduction.tex}
-\input{content/02-MyoArmband.tex}
-\input{content/03-Theory.tex}
-\input{content/04-Methodology.tex}
+\input{content/02-Background.tex}
+\input{content/03-MyoArmband.tex}
+\input{content/04-Theory.tex}
+\input{content/05-Methodology.tex}
+\input{content/XV-Results.tex}
 \input{content/XX-Discussion.tex}
 \input{content/XY-Conclusion.tex}
 
@@ -77,17 +85,19 @@
 \renewcommand{\bibname}{References}
 \bibliographystyle{plain}
 \bibliography{references}
-\addcontentsline{toc}{chapter}{\bibname}
 
 \clearpage
-\input{appendix/appendix.tex}
+
 \addcontentsline{toc}{chapter}{Appendix}
+\input{appendix/appendix.tex}
 \pagenumbering{arabic}% resets `page` counter to 1
 \renewcommand*{\thepage}{A-\arabic{page}}
 
+
 \glsaddall % make it possible to print glossary without references
-\printglossary[title=Abbreviations,nonumberlist] % print the glossary
+\phantomsection
 \addcontentsline{toc}{section}{Abbreviations}
+\printglossary[title=Abbreviations, nonumberlist, nopostdot=true] % print the glossary
 
 
 

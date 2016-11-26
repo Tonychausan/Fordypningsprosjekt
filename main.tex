@@ -17,7 +17,7 @@
 \usepackage{caption} % add captions
 \usepackage{url} % URLs
 
-\usepackage{glossaries} % for abbreviation list
+\usepackage[toc, section]{glossaries} % for abbreviation list
 
 \usepackage{mathptmx} % times new roman font
 \usepackage{setspace} % line space
@@ -40,8 +40,11 @@
 \input{meta.tex}
 
 
-\makeglossaries
+% Add glossarys
 \input{appendix/abbreviations.tex}
+\glsaddall % make it possible to print glossary without references
+\makeglossaries
+
 
 
 \begin{document}
@@ -79,8 +82,6 @@
 \input{content/XY-Conclusion.tex}
 
 
-
-
 % Bibliography - edit references.bib and use the \cite command in text
 \renewcommand{\bibname}{References}
 \bibliographystyle{plain}
@@ -95,10 +96,9 @@
 \input{appendix/appendix.tex}
 \thispagestyle{empty}
 
+\clearpage
 
-\glsaddall % make it possible to print glossary without references
-\printglossary[type=\acronymtype,title=Abbreviations, nonumberlist, style=super] % print the glossary
-\addcontentsline{toc}{section}{Abbreviations}
+\printglossary[type=abbreviation, title=Abbreviations, nonumberlist, style=custom_super] % print the glossary
 
 
 

@@ -1,7 +1,6 @@
 \documentclass[12pt]{scrreprt}
 \usepackage[utf8]{inputenc}
 
-
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -11,11 +10,13 @@
 
 
 \usepackage{amsmath} % Math
-\usepackage{hyperref} % Hyperlinks
-\usepackage[noabbrev]{cleveref} % Clickalbe hyperlinks
 \usepackage[parfill]{parskip} % Remove intent on paragraph
 \usepackage{caption} % add captions
 \usepackage{url} % URLs
+\usepackage{hyperref} % Hyperlinks
+\usepackage[noabbrev]{cleveref} % Clickalbe hyperlinks
+
+
 
 \usepackage[toc, section]{glossaries} % for abbreviation list
 
@@ -28,15 +29,23 @@
 \usepackage{etoolbox}
 \apptocmd{\thebibliography}{\raggedright}{}{}
 
+
+\usepackage{enumitem} %list item
+
+
+
+
+% TEMPORARY for writing the report %
+% Remember to remove %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[inline]{showlabels} % show the label of different figures, tables etc....
-
-
-
 \usepackage{xcolor}
-
 % Make pages dark and white text
 \pagecolor[rgb]{0.3, 0.3, 0.3}
 \color[rgb]{0.9,0.9,0.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 % Edit the meta.tex file to change title and author names
 \input{meta.tex}
@@ -53,7 +62,7 @@
 % The title page
 \input{title.tex}
 
-\input{content/00-Abstract.tex}
+\input{content/00-Abstract/Abstract.tex}
 \thispagestyle{empty}
 
 \clearpage
@@ -74,14 +83,14 @@
 \setcounter{page}{1}
 
 % Main matter - edit corresponding file under content/ to change
-\input{content/01-Introduction.tex}
-\input{content/02-Background.tex}
-\input{content/03-MyoArmband.tex}
-\input{content/04-Theory.tex}
-\input{content/05-Methodology.tex}
-\input{content/XV-Results.tex}
-\input{content/XX-Discussion.tex}
-\input{content/XY-Conclusion.tex}
+\input{content/01-Introduction/Introduction.tex}
+\input{content/02-Background/Background.tex}
+\input{content/03-Myo_Armband/MyoArmband.tex}
+\input{content/04-Theory/Theory.tex}
+\input{content/05-Methodology/Methodology.tex}
+\input{content/XV-Results/Results.tex}
+\input{content/XX-Discussion/Discussion.tex}
+\input{content/XY-Conclusion/Conclusion.tex}
 
 
 % Bibliography - edit references.bib and use the \cite command in text

@@ -30,7 +30,17 @@ The Myo armband consist of eight EMG sensors and nine-axis IMU containing gyrosc
 
 \section{The Myo SDK}
 \label{sec:myoSDK}
-Thalmic Labs provides a SDK that allows developers to obtain access to the data from the Myo device. Since the Windows SDK was used, every statements in this report will be based on the Windows SDK.
+Thalmic Labs provides a SDK that allows developers to obtain access to the data from the Myo device. Since the Windows SDK was used, every statements in this report will be based on the Windows SDK. The library at the core of the Myo SDK allows applications to interact with the Myo armband. All functionality in libmyo is exposed through a plain C API. Typically, applications do not interact with the libmyo C API directly. Instead they use a language binding corresponding to the programming language used by the application \cite{myoSDK}.
+
+\Cref{fig:myoSDKstack} illustrates the Myo development stack from an application using the SDK down to a physical Myo device
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=10cm]{images/myo-sdk-stack.png}
+    \captionsource{\url{https://developer.thalmic.com/docs/api_reference/platform/the-sdk.html}}
+    \caption[The Myo SDK stack]{The Myo SDK stack: Myo development stack from an application using the SDK down to a physical Myo device}
+    \label{fig:myoSDKstack}
+\end{figure}
 
 The Myo armband provide applications with two type of data: Spatial data and gestural data.
 
@@ -44,4 +54,5 @@ Spatial data represents the location of the armband, and informs the application
 All which has a frame rate of 50 hz. Accelerometer data and gyroscope data is represented as 3D-vectors, with the unit g-force (accelerometer) and deg/s (gyroscope), while the orientation data from the magnetometer is represented as quaternions.
 
 \subsection{Gestural Data (EMG sensor)}
+\label{subsec:myoEmgSensor}
 Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a frame rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} doesn't exactly provide information about the measurement unit, but the values are converted into a 8-bit value ranging from -128 to 128.

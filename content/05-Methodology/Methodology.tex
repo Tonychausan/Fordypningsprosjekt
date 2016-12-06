@@ -1,8 +1,25 @@
 \chapter{Methodology}
-This chapter will cover a description of the implemented system. 
+This chapter will cover a description of the implemented system. The system provide four functionalists 
 
-\section{Training Data}
+\begin{description}[style=nextline]
+    \item [Gesture recognition] The main functionality of the system is gesture recognition, and this chapter will mostly cover this functionallity.
+    \item [Measurements display] The system have the option to display the live measurement from the Myo armband. The orientation quaternions from he magnetometer is translated into roll, pitch, and yaw, while the other data is raw from the Myo armband. This is a side functionality of the system and we will therefore not go into detail of this functionality.
+    \item [Compress files] The system provide a method to compress JSON-files from Pewter to appropriate size, more about Pewter and compression of files are described in \cref{sec:traning_data}.
+    \item [Pre-data gesture comparison] Instead of analysing live recorded gesture, the system provide an option to analyse pre-recorded data. This functionality is implemented with the intent of testing the system. Methodologically, it is the same as the gesture recognition functionality.
+\end{description}
 
-\section{File Compression}
+\section{System Architecture}
+The system consist of a Myo armband, connected via Bluetooth to a computer. The computer use the Myo Connect, drivers provided by Thalmic, to receive data from the Myo armband. By using the MyoSDK, described in \cref{sec:myoSDK}, the system get easy access to the received data. The system is implemented using C++, since the C++ bindings are included in the Myo SDK. The Myo development stack diagram is illustrated in \cref{fig:myoSDKstack}.
 
+\section{Gesture recording}
+The implemented system is not an on-demand gesture recognition solution, but rather an interrupt-based gesture recognition system. To test gestures the user is requested to press enter before the start of the gesture. After the button is pressed, the user have a given time to preform the gesture. The given time is not determined by an actual time variable, but by the numbers of sampling from the sensors given by $n_{s}$, such that
+\begin{equation}
+\label{eq:data_size_eq}
+    n_{s} = f_{s} * t
+\end{equation}
+where $s$ is a given sensor, $f_{s}$ is the sampling frequency of sensor $s$, and $t$ is the given time. The sampling frequency of the EMG-sensor is 200 hz, and 50 hz for accelerometer, gyroscope and magnetometer, as mentioned in \cref{sec:myoSDK}. The gesture recording stops, when all of the sensors have archived a sampling set of size $n_{s}$.
+
+The recorded gesture is used for comparison with the training set of defined ASL signs. The methods for data comparison is described in detail in \cref{sec:data_comparison}.
+
+\input{content/05-Methodology/sections/training_data.tex}
 \input{content/05-Methodology/sections/data_comparison.tex}

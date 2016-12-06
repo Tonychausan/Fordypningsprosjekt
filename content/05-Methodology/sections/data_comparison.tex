@@ -1,7 +1,15 @@
 \section{Data Comparison}
+\label{sec:data_comparison}
+Different comparison methods was used for data comparison. Looking on a graph representation of the data, we can see a visual similarity of the graphs.
+
+\subsection{Dynamic Time Wrapping}
+Dynamic time warping (DTW) is a well-known technique to find an optimal
+alignment between two given (time-dependent) sequences $x$ and $y$ under certain restrictions \cite{muller2007dynamic}. The goal is to align two sequence of graph by warping the time axis iteratively until an optimal match between the two graph is found.
+
+DTW algorithm work with that it tries to fill a cost matrix. Each element of the cost matrix is the distance of the corresponding elements of the two sequences. Calculating this matrix have a complexity of $\mathcal{O}(n*m)$ where $n$ and $m$ is the size of the sequences $x$ and $y$. 
 
 \subsection{Cross Correlation}
-\label{sec:cross_correlation}
+\label{subsec:cross_correlation}
 Cross Correlation is a method to estimate the degree of similarity of two series. Cross correlation works on any number of dimension, but for the purpose of this project, we only need to take a look at the one-dimensional cross correlation. Let $x$ and $y$ be two series, then we can define the one-dimensional normalized cross correlation $r$ at delay $d$ as	
 
 \begin{equation}
@@ -9,6 +17,6 @@ Cross Correlation is a method to estimate the degree of similarity of two series
     r(d) = \frac{\sum\limits_{i=0}\limits^{n} [(x(i) - \mean{x}) * (y(i-d) - \mean{y})]}{\sqrt{\sum\limits_{i=0}\limits^{n} (x(i) - \mean{x})^{2}} * \sqrt{\sum\limits_{i=0}\limits^{n} (y(i-d) - \mean{y})^{2}}},
 \end{equation}
 
-where $n$ is the number of point and $\mean{x}$ and $\mean{y}$ are the means of the corresponding series \cite{cross_correlation_theory}. The cross correlation have a range of -1 to 1. The value gives information about the series rises and falls relative to each other, where 0 indicating no correlation, $r > 0$ indicating positive correlation and  $r < 0$ indecating negativ correlation. If both rise at an identical rate, then we have $r = 1$, and opposite $r = -1$ if they fall at an identical rate. 
+where $n$ is the number of point and $\mean{x}$ and $\mean{y}$ are the means of the corresponding series \cite{cross_correlation_theory}. The cross correlation have a range of -1 to 1. The value gives information about the series rises and falls relative to each other, where 0 indicating no correlation, $r > 0$ indicating positive correlation and $r < 0$ indicating negative correlation. If both rise at an identical rate, then we have $r = 1$, and opposite $r = -1$ if they fall at an identical rate. 
 
 Given by the formula \ref{eq:cross_correlation} we get an issue when the index is less than 0 or when the index is greater than or equal to the number of points. The most common approach is to ignor this points and let $y(k) = 0$ if $k < 0$ or $k \geq n$ \cite{cross_correlation_code}.

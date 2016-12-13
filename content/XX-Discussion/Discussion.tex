@@ -1,4 +1,35 @@
 \chapter{Discussion}
 \label{chap:discussion}
 
+\section{System Analysis}
+As a comparison to SCEPTRE, the system described in \cref{sec:sceptre}, we archived a less accurate and slower system. SCEPTRE used the DTW to analyse accelerometer and orientation data, but it is presumably a faster version of the algorithm then the one described in this report. They achieved a much better result for EMG data by using EMG-energy described in \cite{paudyal2016sceptre}. The difference between the systems are the use of cross correlation and including the use of data from the gyroscope.
+
+The current system have an analyse time, the time after recording the gesture to the system returns the result, over ten seconds. This is too slow for a good user experience, but optimization for an on-demand recognition was not a priority. It should also be mentioned that cross correlation did have a slightly better run time than DTW, despite the same time complexity.
+
+\subsection{Machine Learning}
+Alternative methods for gesture recognition include some machine learning techniques, such as Naive Bayes classifier, Hidden Markov Models, Decision tree learning. Hidde Markov models have intrinsic properties which make them very attractive for sign language recognition \cite{starner1997real}. In \cite{wu2009gesture}, a gesture recognition system with a 3D accelerometer is proposed. The system is based on hidden Markov model and DTW. Machine learning has in general a higher degree of complexity then comparison methods, and thus a comparison method was used in this system. 
+
+In \cite{pattichis1996genetics}, a approach which combines artificial neural networks  and a genetics-based machine learning algorithm for classification of EMG signals for diagnosing neuromuscular disorders is proposed. Neural networks can be a good alternative for EMG since they are not constrained by a predefined mathematical relationship between dependent and independent variables, and have the ability to model any arbitrarily complex nonlinear relationship \cite{tu1996advantages}. 
+
+\section{Result Analysis}
+From the results we can see that DTW and Cross correlation have some differences when used to analyse the same data set. \Cref{table:DTW_test} and \ref{table:cross_correlation_test} shows a higher accuracy for cross correlation when all the sensor data is used, but when EMG-data is ignored, shown in \cref{table:DTW_without_EMG_test} and \ref{table:cross_correlation_without_EMG_test}, a closer accuracy is achieved. The results of cross correlation with both EMG and IMU data (\ref{table:cross_correlation_test}) and the results with only the IMU data (\ref{table:cross_correlation_without_EMG_test}) have nearly the same accuracy. If we look at the actual output values of the tests we can see that the difference of "Why" and "Sleep" sometimes can get really close, and it is not unlikely that it is a coincidence that the EMG data correlation value tilt the system to identify the right gesture. 
+
+From the results we can see a clear flaw in the EMG-analysis. The described EMG analysis in \cref{subsec:emg_analysis} gave better results on the prototype test, where the test set was smaller with only one or two instances for each ASL sign, but after expanding the test set, we can not give any good conclusion. \Cref{table:cross_correlation_without_IMU_test} and \ref{table:cross_correlation_raw_EMG_test} respectively show the results of analysis from processed EMG-data and raw EMG-data, both using cross correlation. From the output of correlation values of the results of \Cref{table:cross_correlation_without_IMU_test} and \ref{table:cross_correlation_raw_EMG_test} we can see that the processed EMG-data analysis return "Eat" and "Help" for most of the tests, while the raw EMG-data analysis return only "Help" for most of the tests.
+
+
+
 \section{Future Work}
+The current system is still deep down in the prototype-level, and there is room for improvement.
+
+\begin{description}[style=nextline]
+    \item [Continuous Processing] As mentioned in \cref{chap:methodology} the system is not an on-demand recognition system. A start button was utilized to start gathering data. This solution isolate the gestures and it is easier for the algorithm to locate useful data. By replacing the graph analysis method with Hidden Markov model-based methods, which dominate speech recognition \cite{huang1990hidden}. Speech recognition have close relationship with gesture recognition.
+    
+    \item [Speed Optimization] Since this report dose not focus on an optimized algorithm, the current methods for data analysis are quite slow. Using faster methods for graph analysing, such as PrunedDTW \cite{silva2016speeding}, may improve the speed. Fast analysis is essential for an on-demand recognition system, and with the current solution, we are not even close to a fast responsive system. 
+    
+    \item [EMG-Analysis] From the results in \Cref{sec:test_results} we can see a clear weakness in EMG-data analysis. Future work will include improvement of the EMG-data analysis. Using signal processing method such as Fourier transform or Hilbert–Huang transform may be useful on nosy EMG-data.
+    
+    \item [Position Aware] The current system depends on that the user place the Myo armband on the correct location of the arm. While calibration of the IMU-data is done, the EMG-data is dependent on the placement of the arm. The system could use the data from the IMU-sensors to calculate the positions of the different pods. This improvement will make it easier for the user to put on the armband.
+    
+    \item [User Independence] All the implementation of the system is based on tests on the same user. EMG signals may not be the same for everyone, and implementing an user independent system is important for the application to be useful.
+    
+\end{description}

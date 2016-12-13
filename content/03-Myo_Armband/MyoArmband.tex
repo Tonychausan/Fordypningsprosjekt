@@ -4,8 +4,8 @@ This report is based on the use of the Myo armband, and this chapter will cover 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[height=5cm]{images/myoarmband.jpg}
-    \captionsource{\url{https://s3.amazonaws.com/wordpressprod/blog/wp-content/uploads/2014/06/front-view.jpg}}
+    \includegraphics[height=5cm]{content/03-Myo_Armband/images/myo.png}
+    \captionsource{\url{https://static.thalmic.com/sapphire/tenFootExperience/hero/myo.png}}
     \caption[The Myo Armband]{The Myo Armband}
     \label{fig:myoarmband}
 \end{figure}
@@ -36,7 +36,7 @@ Thalmic Labs provides a SDK that allows developers to obtain access to the data 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[height=10cm]{images/myo-sdk-stack.png}
+    \includegraphics[height=9.5cm]{images/myo-sdk-stack.png}
     \captionsource{\url{https://developer.thalmic.com/docs/api_reference/platform/the-sdk.html}}
     \caption[The Myo SDK stack]{The Myo SDK stack: Myo development stack from an application using the SDK down to a physical Myo device}
     \label{fig:myoSDKstack}
@@ -51,8 +51,8 @@ Spatial data represents the location of the armband, and informs the application
   \item raw Gyroscope data
   \item Orientation data
 \end{itemize}
-All which has a frame rate of 50 hz. Accelerometer data and gyroscope data is represented as 3D-vectors, with the unit g-force (accelerometer) and deg/s (gyroscope), while the orientation data from the magnetometer is represented as quaternions.
+All of the IMU-sensor have a sampling rate of 50 hz. Accelerometer data and gyroscope data is represented as 3D-vectors, with the unit g-force (accelerometer) and deg/s (gyroscope), while the orientation data from the magnetometer is represented as quaternions.
 
 \subsection{Gestural Data (EMG sensor)}
 \label{subsec:myoEmgSensor}
-Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a frame rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} doesn't exactly provide information about the measurement unit, but the values are converted into a 8-bit value ranging from -128 to 128.
+Gestural data provide applications with information of less orientation depended movements, such as hand gestures. This data is provided by the EMG sensors. The Myo armband have eight EMG sensors, which outputs raw EMG data of 8-bit with a sampling rate of 200 Hz \footnote{\url{http://developerblog.myo.com/raw-uncut-drops-today/}}. The MyoSDK documentation \cite{myoSDK} does not provide information about the measurement unit for the EMG-data, but the values are converted into a 8-bit value ranging from -128 to 128.

@@ -1,2 +1,242 @@
 \chapter{Results}
 \label{chap:results}
+This chapter will cover preliminary for the test and the test result collected from the test. The results will be further discussed in \cref{chap:discussion}.
+
+\section{Preliminary}
+The system is only intended to test the potential for the Myo armband, and therefore will have only 5 defined ASL signs, that are described in \cref{table:ASL_signs}. The ASL signs are randomly selected from the ASL dictionary \cite{ASL_dict}. 
+
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{7cm}|}
+        \hline
+        \textbf{ASL name} & \textbf{Location} & \textbf{Movement disciption} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & Mouth & Upward toward the mouth with a beak-formed hand. Small back and forward motion near the mouth. \\ \hline
+        
+        \textbf{Help} & Thorax & Hammer-like motion over the other hand at thorax level height.\\ \hline
+        
+        \textbf{Sleep} & Nose & Open hand to nose level, then lower the arm to right bellow the chin while making a fist on the way.\\ \hline
+        
+        \textbf{Thank you} & Mouth & Open hand toward mouth, then half down again.\\ \hline
+        
+        \textbf{Why} & Upper head & Open hand toward uper head, then hand away from the head while making a fist with the thumb and pinky finger pointing upward.\\ \hline
+    \end{tabular}
+    \caption[Defines ASL signs]{List of ASL signs used for the testing of the system.}
+    \label{table:ASL_signs}
+\end{table}
+
+All the gestures have three instances of training data, which seemed sufficient for a good result. The training instances is recorded on different time, to make sure it represent a good variety of data of the same gesture. All the results shown in \cref{sec:test_results} are from tests done on the same user. The test data is pre-recorded so that all the tests can work on the same data set. For each gesture we have ten instances of test data set.
+
+All the training and test instances is done with some initial setups, that is
+\begin{itemize}
+    \item Myo armband placement on arm, and
+    \item start position of arm
+\end{itemize}
+The system does not provide any pre-processing analysis to calculate the position of the Myo armband on the arm or the start position of the gesture. EMG from different positions on the arm have different values, and the system is dependent on that the data from the pads match with the placement of the pad when the training instances was recorded.
+
+The tests tries to compare the utilization of IMU-sensor and EMG-sensors, by letting the recognition system exclude data from given a sensor. This report will not cover exclusion of each individual sensor, but treat the IMU-sensors as one instance. The results show both the results for test with DTW and Cross correlation.  
+
+\section{Raw Results}
+This section will provide some of the raw result for the tests. 
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{  l  p{3cm}  p{3cm} p{3cm}}
+        \multicolumn{3}{l}{Test file: test-sleep02.json} \\
+        \multicolumn{3}{l}{Comparison method: Dynamic Time Warping} \\[0.3cm]
+        \hline
+        \textbf{Gesture} & \textbf{r} & \textbf{IMU} & \textbf{EMG} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 2.05578 &  1.79945 & 0.256333 \\ 
+        
+        \textbf{Help}  & 0.153523 &  0 & 0.153523 \\ 
+        
+        \textbf{Sleep}  & 2.04685 &  2.02115 & 0.0257067 \\ 
+        
+        \textbf{Thank you} & 0.95783 &  0.892639 & 0.0651904 \\ 
+        
+        \textbf{Why} & 1.82603 &  1.82603 & 0 \\ 
+        \hline
+        
+        \multicolumn{3}{l}{Gesture: SLEEP} \\
+        \multicolumn{3}{l}{Result: EAT}\\
+    \end{tabular}
+    \caption[Raw Result of DTW]{Raw result output using DTW}
+    \label{table:raw_result_test-sleep02_DTW}
+\end{table}
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{  l  p{3cm}  p{3cm} p{3cm}}
+        \multicolumn{3}{l}{Test file: test-sleep02.json} \\
+        \multicolumn{3}{l}{Comparison method: Cross-correlation} \\[0.3cm]
+        \hline
+        \textbf{Gesture} & \textbf{r} & \textbf{IMU} & \textbf{EMG} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 8.55614 &  6.95654 & 1.5996 \\ 
+        
+        \textbf{Help}  & 6.06123 &  4.41452 & 1.6467 \\ 
+        
+        \textbf{Sleep}  & 9.12446 &  7.61892 & 1.50554 \\ 
+        
+        \textbf{Thank you} & 7.37875 &  5.90616 & 1.4726 \\ 
+        
+        \textbf{Why} & 8.29722 & 6.79873 & 1.49849 \\ 
+        \hline
+        
+        \multicolumn{3}{l}{Gesture: SLEEP} \\
+        \multicolumn{3}{l}{Result: SLEEP}\\
+    \end{tabular}
+    \caption[Raw Result of Cross correlation]{Raw result output using cross correlation}
+    \label{table:raw_result_test-sleep02_cross_correlation}
+\end{table}
+
+\section{Test Results}
+\label{sec:test_results}
+
+% DTW
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 9 &  10 \\ \hline
+        
+        \textbf{Help}  & 10 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 2 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 10 &  10 \\ \hline
+        
+        \textbf{Why}  & 10 &  10 \\ \hline
+    \end{tabular}
+    \caption[DTW test]{DTW}
+    \label{table:DTW_test}
+\end{table}
+
+%DTW without EMG
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 9 &  10 \\ \hline
+        
+        \textbf{Help}  & 10 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 6 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 10 &  10 \\ \hline
+        
+        \textbf{Why}  & 10 &  10 \\ \hline
+    \end{tabular}
+    \caption[DTW without EMG test]{DTW without EMG}
+    \label{table:DTW_without_EMG_test}
+\end{table}
+
+%DTW without IMU
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 10 &  10 \\ \hline
+        
+        \textbf{Help}  & 3 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 3 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 1 &  10 \\ \hline
+        
+        \textbf{Why}  & 0 &  10 \\ \hline
+    \end{tabular}
+    \caption[DTW without IMU]{DTW without IMU}
+    \label{table:DTW_without_IMU_test}
+\end{table}
+
+% Cross-correlation
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 8 &  10 \\ \hline
+        
+        \textbf{Help}  & 10 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 9 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 10 &  10 \\ \hline
+        
+        \textbf{Why}  & 10 &  10 \\ \hline
+    \end{tabular}
+    \caption[Cross-correlation test]{Cross-correlation}
+    \label{table:cross_correlation_test}
+\end{table}
+
+% Cross-correlation without EMG
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 8 &  10 \\ \hline
+        
+        \textbf{Help}  & 10 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 8 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 10 &  10 \\ \hline
+        
+        \textbf{Why}  & 10 &  10 \\ \hline
+    \end{tabular}
+    \caption[Cross-correlation without EMG test]{Cross-correlation without EMG}
+    \label{table:cross_correlation_without_EMG_test}
+\end{table}
+
+% Cross-correlation without IMU
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 7 &  10 \\ \hline
+        
+        \textbf{Help}  & 7 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 3 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 1 &  10 \\ \hline
+        
+        \textbf{Why}  & 2 &  10 \\ \hline
+    \end{tabular}
+    \caption[Cross-correlation without IMU]{Cross-correlation without IMU}
+    \label{table:cross_correlation_without_IMU_test}
+\end{table}
+
+% Cross-correlation without IMU
+\begin{table}[ht!]
+\centering
+    \begin{tabular}{ | l | p{4cm} | p{4cm}|}
+        \hline
+        \textbf{Gesture} & \textbf{Correct Recognized Gestures} & \textbf{Number Of Tests} \\ \Xhline{4\arrayrulewidth}
+        
+        \textbf{Eat} & 1 &  10 \\ \hline
+        
+        \textbf{Help}  & 9 &  10 \\ \hline
+        
+        \textbf{Sleep}  & 2 &  10 \\ \hline
+        
+        \textbf{Thank you}  & 4 &  10 \\ \hline
+        
+        \textbf{Why}  & 1 &  10 \\ \hline
+    \end{tabular}
+    \caption[Cross-correlation on raw EMU]{Cross-correlation on raw EMU-data}
+    \label{table:cross_correlation_raw_EMG_test}
+\end{table}

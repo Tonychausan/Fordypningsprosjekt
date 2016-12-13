@@ -1,4 +1,4 @@
-\documentclass[12pt]{scrreprt}
+\documentclass[fontsize=13pt,DIV=11]{scrreprt}
 \usepackage[utf8]{inputenc}
 
 \usepackage{natbib}
@@ -8,17 +8,19 @@
 \pgfplotsset{compat=1.12}
 \usepackage{textcomp}
 
-
 \usepackage{amsmath} % Math
 \usepackage[parfill]{parskip} % Remove intent on paragraph
 \usepackage{caption} % add captions
+\usepackage{subcaption} % add sub captions
 \usepackage{url} % URLs
 \usepackage{hyperref} % Hyperlinks
 \usepackage[noabbrev]{cleveref} % Clickalbe hyperlinks
 
+% line thickness for tables (Xhline)
+\usepackage{siunitx}
+\usepackage{makecell}
 
-
-\usepackage[toc, section]{glossaries} % for abbreviation list
+\usepackage[toc]{glossaries} % for abbreviation list
 
 \usepackage{mathptmx} % times new roman font
 \usepackage{setspace} % line space
@@ -32,7 +34,7 @@
 
 \usepackage{enumitem} %list item
 
-
+\usepackage{float} 
 
 
 % TEMPORARY for writing the report %
@@ -53,8 +55,10 @@
 
 % Add glossarys
 \input{appendix/abbreviations.tex}
-\glsaddall % to print glossary without references
+
+
 \makeglossaries
+\glsaddall % to print glossary without references
 
 
 
@@ -77,6 +81,9 @@
 \clearpage
 
 \listoftables
+\clearpage
+
+\printglossary[title=Abbreviations, nonumberlist, style=custom_super] % print the glossary
 \clearpage
 
 \pagenumbering{arabic}
@@ -108,7 +115,7 @@
 \thispagestyle{empty}
 
 \clearpage
+%\printglossary[title=Abbreviations, nonumberlist, style=custom_super] % print the glossary
 
-\printglossary[type=abbreviation, title=Abbreviations, nonumberlist, style=custom_super] % print the glossary
 
 \end{document}

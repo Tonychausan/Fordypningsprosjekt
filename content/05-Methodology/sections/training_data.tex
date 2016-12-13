@@ -1,6 +1,13 @@
 \section{Training Data}
 \label{sec:traning_data}
-The method used for gesture recognition uses a comparison method that compare the input with a predefined set of training data, a more detailed view of the comparison method is described in \cref{sec:data_comparison}. This section will cover the training set in detail. Each defined ASL sign have three instances of JSON-files containing the training data for the ASL sign.
+The method used for gesture recognition uses a comparison method that compare the input with a predefined set of training data, a more detailed view of the comparison method is described in \cref{sec:data_comparison}. This section will cover the training set in detail. Each defined ASL sign have three instances of JSON-files containing the training data for the ASL sign. \Cref{fig:training_data_diagram} shows a diagram of the progress of adding new instance of a gesture to the system.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[height=1.6cm]{content/05-Methodology/images/step_creating_new_gesture.png}
+    \caption[Training Data Diagram]{A stepwise diagram of the progress of recording new training instances. At step (a) we use Pewter to record the gesture, which returns data stored data in JSON-format at step (b). At step (c) the system provide a compression method for the raw JSON-files to ensure smaller file size.}
+    \label{fig:training_data_diagram}
+\end{figure}
 
 \subsection{Data acquisition}
 \label{subsec:data_acquisition}

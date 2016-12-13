@@ -1,4 +1,5 @@
 \chapter{Methodology}
+\label{chap:methodology}
 This chapter will cover a description of the implemented system. The system provide four functionalists 
 
 \begin{description}[style=nextline]
@@ -9,7 +10,25 @@ This chapter will cover a description of the implemented system. The system prov
 \end{description}
 
 \section{System Architecture}
-The system consist of a Myo armband, connected via Bluetooth to a computer. The computer use the Myo Connect, drivers provided by Thalmic, to receive data from the Myo armband. By using the MyoSDK, described in \cref{sec:myoSDK}, the system get easy access to the received data. The system is implemented using C++, since the C++ bindings are included in the Myo SDK. The Myo development stack diagram is illustrated in \cref{fig:myoSDKstack}.
+The system consist of a Myo armband, connected via Bluetooth to a computer, an illustration of the system is shown in \cref{fig:system_figure}. The computer use the Myo Connect, drivers provided by Thalmic, to receive data from the Myo armband. By using the MyoSDK, described in \cref{sec:myoSDK}, the system get easy access to the received data. The system is implemented using C++, since the C++ bindings are included in the Myo SDK. The Myo development stack diagram is illustrated in \cref{fig:myoSDKstack}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{content/05-Methodology/images/Deployment.png}
+        \caption{}
+        \label{fig:myo_deployment}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[height=5cm]{content/05-Methodology/images/system_photo.jpg}
+        \caption{}
+        \label{fig:myo_system_photo}
+    \end{subfigure}
+    \caption[System illustration]{(\subref{fig:myo_deployment}) A user wearing the Myo armband performing a gesture. (\subref{fig:myo_system_photo}) The Myo armband connected to the implemented system on a Windows computer. }
+    \label{fig:system_figure}
+\end{figure}
 
 \section{Gesture recording}
 The implemented system is not an on-demand gesture recognition solution, but rather an interrupt-based gesture recognition system. To test gestures the user is requested to press enter before the start of the gesture. After the button is pressed, the user have a given time to preform the gesture. The given time is not determined by an actual time variable, but by the numbers of sampling from the sensors given by $n_{s}$, such that
@@ -19,7 +38,21 @@ The implemented system is not an on-demand gesture recognition solution, but rat
 \end{equation}
 where $s$ is a given sensor, $f_{s}$ is the sampling frequency of sensor $s$, and $t$ is the given time. The sampling frequency of the EMG-sensor is 200 hz, and 50 hz for accelerometer, gyroscope and magnetometer, as mentioned in \cref{sec:myoSDK}. The gesture recording stops, when all of the sensors have archived a sampling set of size $n_{s}$.
 
-The recorded gesture is used for comparison with the training set of defined ASL signs. The methods for data comparison is described in detail in \cref{sec:data_comparison}.
+The recorded gesture is used for comparison with the training set of defined ASL signs. The methods for data comparison is described in detail in \cref{sec:data_comparison}. A diagram of the process from recording a gesture to calculate a similarity rating is illustrated in \cref{fig:gesture_process_diagram}. \Cref{fig:recording_printscreen} shows a print screen of the system while it analyse an input data set.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=9.5cm]{content/05-Methodology/images/Process_diagram.png}
+    \caption[Process Diagram]{A diagram of the progress from recording a gesture to calculate a similarity rank.}
+    \label{fig:gesture_process_diagram}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=9.5cm]{content/05-Methodology/images/recording.png}
+    \caption[Gesture Recording]{A print screen of the system analysing the recorded input.}
+    \label{fig:recording_printscreen}
+\end{figure}
 
 \input{content/05-Methodology/sections/training_data.tex}
 \input{content/05-Methodology/sections/data_comparison.tex}

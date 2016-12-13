@@ -1,5 +1,6 @@
 \section{SCEPTRE}
-This report is mainly based on a project called SCEPTRE by some researchers from Arizona State University \cite{paudyal2016sceptre}. The primary goal of SCEPTRE is to match gestures.
+\label{sec:sceptre}
+This report is mainly inspired by a project called SCEPTRE by some researchers from Arizona State University \cite{paudyal2016sceptre}. The primary goal of SCEPTRE is to match gestures.
 
 The system SCEPTRE is comprised of an Android smartphone or a Bluetooth enabled computer and one to two Myo devices. The goal is to develop a system using two Myo devices to decipher American Sign Language (ASL) gestures, and display the meaning on a smartphone or computer. SCEPTRE utilizes the data from the accelerator, magnetometer, and EMG-sensors. The project is an attempt to develop a system toward a system which is ubiquitous, non-invasive, works in real-time, and can be trained interactively by the user. 
 
@@ -11,4 +12,4 @@ The system is envisioned to be used in two primary use cases:
 
 20 ASL sign with training instances for each gesture were chosen to prototype test the system. It is also possible for the user to train the system with additional signs, either in "guided mode" or "ASL mode". In guided mode the system compare the new gesture data with the existing data collection to ensure there are no clashes, meaning too much overlapping data, the ASL mode does not make this guarantee.
 
-Dynamic Time Warping (DTW) is used to compare accelerometer and orientation data. DTW is a technique to find an optimal alignment between two given (time-dependent) sequences. For the EMG-data an energy based comparison was used. By using a combination of data from the accelerometer, magnetometer and EMG-sensors the system was able to archive an accuracy of 97\%. 
+Dynamic Time Warping (DTW) is used to compare accelerometer and orientation data. For the EMG-data an energy based comparison was used. By using a combination of data from the accelerometer, magnetometer and EMG-sensors the system was able to archive an accuracy of 97\%. 

@@ -1,2 +1,7 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
+Through this report we have gained an insight of a prototype-level system for gesture recognition. The system makes use of data provided from the Myo armband to recognize data. Even though cross correlation produced a slightly better recognition accuracy on the test set, it seems like both of the used methods, dynamic time wrapping and cross correlation, shows good results on the analysis of the data from the IMU-sensors. 
+
+The current system did not have good accuracy on gesture recognition using only EMG-data. EMG-data did show some visual similarity, but the data is too nosy to give good result for methods such as dynamic time wrapping and cross correlation, which calculate similarity of two graphs. Pre-processing the EMG-data by dividing the data into intervals, and take the square sum of EMG values on the interval did not seem to improve the result. Alternative more advance signal processing method such Fourier transform and Hilbert–Huang transform may remove the nosiness of the data, but this is not tested for the current system.
+
+In overall for the current system, it seems like by using IMU data from the Myo armband we get a high accuracy of identifying a gesture for a small set of ASL signs, but the EMG data seems to need some alternative pre-processing techniques. 
